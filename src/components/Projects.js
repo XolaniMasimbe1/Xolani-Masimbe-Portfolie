@@ -5,8 +5,9 @@ const projectsData = [
   {
     title: 'Candle Management System',
     year: '2025',
-    description: 'Full-stack web and mobile application for automating candle business operations. Manages products, stock levels, customer orders, production planning, and raw material requirements. Consolidates manual spreadsheet processes into a centralized platform.',
-    technologies: ['React', 'React Native', 'Node.js', 'MySQL']
+    description:
+      'End-to-end candle business platform with a Java + Spring Boot backend, MySQL Workbench database, and React/React Native frontends. Exposes RESTful APIs consumed by both the web app and mobile app to manage products, stock, customer orders, production planning, and raw materials in a single system.',
+    technologies: ['Java', 'Spring Boot', 'REST API', 'MySQL', 'React', 'React Native', 'Node.js']
   },
   {
     title: 'Healthcare Management System',

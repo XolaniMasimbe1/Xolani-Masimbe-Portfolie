@@ -1,4 +1,5 @@
 import SectionTitle from './ui/SectionTitle'
+import profilePicture from '../img/Profile picture.jpg'
 
 export default function About() {
   return (
@@ -7,7 +8,7 @@ export default function About() {
       <div className="about-layout">
         <div className="about-photo-wrapper">
           <img
-            src="/xolani-profile.jpg"
+            src={profilePicture}
             alt="Portrait of Xolani Masimbe"
             className="about-photo"
           />
