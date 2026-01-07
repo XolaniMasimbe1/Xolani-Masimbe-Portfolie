@@ -8,6 +8,17 @@ const contactData = [
     href: 'mailto:xmasimbe965@gmail.com'
   },
   {
+    label: 'Phone',
+    value: '+27 61 277 3329',
+    href: 'tel:+27612773329'
+  },
+  {
+    label: 'LinkedIn',
+    value: 'linkedin.com/in/xolani-masimbe-177890234',
+    href: 'https://www.linkedin.com/in/xolani-masimbe-177890234',
+    external: true
+  },
+  {
     label: 'GitHub',
     value: 'github.com/XolaniMasimbe1',
     href: 'https://github.com/XolaniMasimbe1',

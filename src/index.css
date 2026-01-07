@@ -12,26 +12,32 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --navy: #0b1220;
-  --blue: #1d4ed8;
-  --green: #16a34a;
-  --yellow: #fbbf24;
-  --slate: #e2e8f0;
-  --text-main: #e2e8f0;
+  --blue: #2563eb;
+  --green: #22c55e;
+  --yellow: #facc15;
+  --text-main: #e5e7eb;
   --text-muted: #cbd5e1;
-  --card: #0f172a;
+}
+
+html {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
   min-width: 320px;
-  min-height: 100vh;
-  background-color: var(--navy);
+  min-height: 100%;
+  background:
+    radial-gradient(circle at 0% 0%, #0b1120, #020617 55%),
+    radial-gradient(circle at 100% 100%, #1d0633, transparent 70%);
   color: var(--text-main);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 #root {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
