@@ -26,6 +26,7 @@ export default function AIAgent() {
       const assistantMessage = { role: 'assistant', content: aiResponse }
       setMessages(prev => [...prev, assistantMessage])
     } catch (error) {
+      console.error('Error in AI Agent:', error)
       const errorMessage = { 
         role: 'assistant', 
         content: 'Sorry, I encountered an error. Please try again.' 
