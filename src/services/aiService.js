@@ -62,24 +62,13 @@ Profile:
 
 User question: ${prompt}`
 
-    // First, try to get available models
-    let modelNames = await getAvailableModels()
-    
-    // If no models found, use fallback list
-    if (modelNames.length === 0) {
-      console.log('[DEBUG] No models found via API, using fallback list')
-      modelNames = [
-        "gemini-1.5-flash",
-        "gemini-1.5-pro",
-        "gemini-pro"
-      ]
-    }
-    
+    // Use only the working model to avoid rate limits
+    const modelNames = ["gemini-2.5-flash-lite"]
     console.log('[DEBUG] Will try models:', modelNames)
     let lastError = null
     
-    // Try both v1 and v1beta endpoints with each model
-    const apiVersions = ['v1', 'v1beta']
+    // Try only v1 API (working version)
+    const apiVersions = ['v1']
     
     for (const modelName of modelNames) {
       for (const apiVersion of apiVersions) {
@@ -127,39 +116,10 @@ User question: ${prompt}`
       }
     }
     
-    // Fallback: Try SDK if direct API calls all failed
-    console.log('[DEBUG] Falling back to SDK...')
-    for (const modelName of modelNames) {
-      try {
-        console.log('[DEBUG] Trying SDK with model:', modelName, 'at', new Date().toISOString())
-        
-        const response = await ai.models.generateContent({
-          model: modelName,
-          contents: enhancedPrompt
-        })
-        
-        console.log('[DEBUG] Successfully used model via SDK:', modelName)
-        console.log('[DEBUG] Response structure:', Object.keys(response || {}))
-        
-        // Handle response - check if text is a property or method
-        const responseText = typeof response.text === 'function' ? response.text() : response.text
-        if (!responseText) {
-          console.warn('[DEBUG] Response.text is empty or undefined, full response:', response)
-        }
-        return responseText || 'No response generated'
-      } catch (error) {
-        lastError = error
-        console.log('[DEBUG] SDK model', modelName, 'failed:', error.message)
-        // If it's a 404 or model not found error, try next model
-        if (error.message && (error.message.includes('404') || error.message.includes('not found') || error.message.includes('not supported'))) {
-          continue
-        }
-        // For other errors, try next model
-        continue
-      }
+    // If all models failed, return a helpful error message
+    if (lastError && lastError.message.includes('quota')) {
+      return "I've reached my usage limit for now. Please try again in a few minutes, or contact me directly at xmasimbe965@gmail.com for immediate assistance."
     }
-    
-    // If all models failed, throw the last error
     throw lastError || new Error('No available models found')
   } catch (error) {
     console.error('[DEBUG] Error details:', error)
