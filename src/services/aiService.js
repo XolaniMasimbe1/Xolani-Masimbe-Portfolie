@@ -49,10 +49,10 @@ export async function generateAIResponse(prompt) {
 Profile:
 - Name: Xolani Masimbe
 - Role: Junior Software Developer
-- Student: ICT Application Development at CPUT
-- Intern: Software Developer at Plum Systems
+- Education: ICT Application Development Diploma (completed 2025) at CPUT
+- Experience: Software Developer Intern at Plum Systems (March 1, 2025 - December 19, 2025) - completed
 - Skills: React, React Native, Node.js, JavaScript, Python, Java, SQL, MySQL, Firebase, Git, AWS, Figma
-- Projects: Candle Management System, Healthcare Management System, CPUT Schedule System
+- Projects: Candle Management System, Healthcare Management System, CPUT Schedule System, To-Do List App, Car Vote System
 - Contact: xmasimbe965@gmail.com | +27 61 277 3329
 - LinkedIn: https://linkedin.com/in/xolani-masimbe-177890234
 

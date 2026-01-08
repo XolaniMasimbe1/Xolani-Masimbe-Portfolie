@@ -1,6 +1,6 @@
 import TechTag from './ui/TechTag'
 
-export default function ProjectCard({ title, year, description, technologies }) {
+export default function ProjectCard({ title, year, description, technologies, sourceCode }) {
   return (
     <div className="project-card">
       <div className="project-header">
@@ -13,6 +13,18 @@ export default function ProjectCard({ title, year, description, technologies }) 
           <TechTag key={index}>{tech}</TechTag>
         ))}
       </div>
+      {sourceCode && (
+        <div className="project-source">
+          <a 
+            href={sourceCode} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="source-code-btn"
+          >
+            View Source Code
+          </a>
+        </div>
+      )}
     </div>
   )
 }
