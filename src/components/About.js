@@ -21,9 +21,10 @@ export default function About() {
             experience.
           </p>
           <p>
-            I&apos;m an ICT Application Development student at CPUT and a Software Developer Intern at
-            Plum Systems, working across React, React Native, Node.js, and Firebase. I enjoy turning
-            real-world business problems into reliable, well‑designed digital products.
+            I completed my ICT Application Development diploma at CPUT in 2025 and finished my
+            Software Developer Internship at Plum Systems (March 2025 - December 2025), working across
+            React, React Native, Node.js, and Firebase. I enjoy turning real-world business problems
+            into reliable, well‑designed digital products.
           </p>
           <p>
             My experience spans full-stack concepts, from databases (SQL/MySQL) to frontend UX.
