@@ -1,8 +1,18 @@
+/* CSS Variables for Automatic Responsive Scaling */
+:root {
+  --font-scale: 1;
+  --spacing-scale: 1;
+  --border-radius-scale: 1;
+}
+
+/* Apply responsive scaling automatically */
 .portfolio {
   display: flex;
   flex-direction: column;
   background: transparent;
   min-height: 100vh;
+  font-size: calc(16px * var(--font-scale));
+  padding: calc(20px * var(--spacing-scale));
 }
 
 /* AI Agent Styles */
@@ -12,11 +22,11 @@
 
 .chat-container {
   background: rgba(255, 255, 255, 0.9);
-  border-radius: 12px;
+  border-radius: calc(12px * var(--border-radius-scale));
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   max-width: 600px;
-  margin: 0 auto;
+  margin: calc(40px * var(--spacing-scale)) auto;
 }
 
 .chat-messages {
@@ -119,15 +129,22 @@
   cursor: not-allowed;
 }
 
+/* Page Content Responsive Styles */
+.page {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: calc(20px * var(--spacing-scale));
+}
+
 .hero {
   background: rgba(15, 23, 42, 0.7);
   color: #f8fafc;
-  padding: 110px 24px 90px;
+  padding: calc(110px * var(--spacing-scale)) calc(24px * var(--spacing-scale)) calc(90px * var(--spacing-scale));
   text-align: center;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
   position: relative;
   overflow: hidden;
-  background-size: 220% 220%;
   animation: heroWave 16s ease-in-out infinite alternate;
 }
 
@@ -142,41 +159,45 @@
 }
 
 .hero-content {
-  max-width: 800px;
+  max-width: calc(800px * var(--font-scale));
   margin: 0 auto;
+  padding: 0 calc(16px * var(--spacing-scale));
 }
 
 .name {
-  font-size: 3.5rem;
+  font-size: calc(3.5rem * var(--font-scale));
   font-weight: 800;
-  margin: 0 0 16px 0;
-  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: calc(16px * var(--spacing-scale));
+  background: linear-gradient(135deg, #60a5fa 0%, #34d399 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: heroGlow 4s ease-in-out infinite alternate;
 }
 
 .title {
-  font-size: 1.85rem;
-  font-weight: 500;
-  margin: 0 0 24px 0;
-  color: rgba(15, 23, 42, 0.9);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  font-size: calc(1.5rem * var(--font-scale));
+  font-weight: 600;
+  margin-bottom: calc(20px * var(--spacing-scale));
+  color: #94a3b8;
 }
 
 .tagline {
-  font-size: 1.15rem;
-  line-height: 1.7;
-  color: #e5e7eb;
-  max-width: 640px;
+  font-size: calc(1.1rem * var(--font-scale));
+  line-height: 1.6;
+  max-width: calc(600px * var(--font-scale));
   margin: 0 auto;
+  color: #cbd5e1;
 }
 
 .container {
-  max-width: 1100px;
-  margin: 40px auto 40px;
-  padding: 32px 24px 60px;
+  max-width: calc(1100px * var(--font-scale));
+  margin: calc(40px * var(--spacing-scale)) auto;
+  padding: calc(32px * var(--spacing-scale)) calc(24px * var(--spacing-scale)) calc(60px * var(--spacing-scale));
   background: rgba(15, 23, 42, 0.75);
   border: 1px solid rgba(148, 163, 184, 0.45);
-  border-radius: 18px;
+  border-radius: calc(18px * var(--border-radius-scale));
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(22px) saturate(160%);
 }
@@ -198,6 +219,10 @@
   top: 0;
   z-index: 10;
   backdrop-filter: blur(10px);
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding-left: calc(50vw - 50% + 24px);
+  padding-right: calc(50vw - 50% + 24px);
 }
 
 .logo {
@@ -288,8 +313,8 @@ section:nth-of-type(5) {
 
 .about-layout {
   display: grid;
-  grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
-  gap: 32px;
+  grid-template-columns: minmax(calc(280px * var(--font-scale)), 1fr);
+  gap: calc(32px * var(--spacing-scale));
   align-items: center;
 }
 
@@ -299,9 +324,9 @@ section:nth-of-type(5) {
 }
 
 .about-photo {
-  width: 240px;
-  height: 240px;
-  border-radius: 24px;
+  width: calc(240px * var(--font-scale));
+  height: calc(240px * var(--font-scale));
+  border-radius: calc(24px * var(--border-radius-scale));
   object-fit: cover;
   border: 2px solid rgba(59, 130, 246, 0.5);
   box-shadow: 0 18px 40px rgba(15, 23, 42, 0.75);
@@ -310,17 +335,17 @@ section:nth-of-type(5) {
 .about-content {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: calc(12px * var(--spacing-scale));
 }
 
 .about-intro {
-  font-size: 1.2rem;
+  font-size: calc(1.2rem * var(--font-scale));
   color: var(--text-main);
 }
 
 .about-greeting {
   display: inline-block;
-  margin-right: 6px;
+  margin-right: calc(6px * var(--spacing-scale));
   font-weight: 600;
   color: var(--blue);
 }
@@ -581,25 +606,38 @@ section:nth-of-type(5) {
   font-size: 0.875rem;
 }
 
-@media (max-width: 768px) {
+/* Mobile First Responsive Design */
+
+/* Small phones (320px - 480px) */
+@media (max-width: 480px) {
+  .portfolio {
+    padding: 10px;
+  }
+
   .name {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
   }
 
   .title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   .tagline {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .section-title {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
 
   .skills-grid {
     grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .project-card {
+    margin: 10px 0;
+    padding: 15px;
   }
 
   .project-header {
@@ -618,5 +656,234 @@ section:nth-of-type(5) {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+  }
+
+  .chat-container {
+    margin: 20px 10px;
+    max-width: 100%;
+  }
+
+  .chat-messages {
+    padding: 15px;
+    max-height: 300px;
+  }
+
+  .message-content {
+    max-width: 90%;
+    font-size: 13px;
+  }
+
+  .nav {
+    padding: 12px 16px;
+    flex-direction: column;
+    gap: 16px;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding-left: calc(50vw - 50% + 16px);
+    padding-right: calc(50vw - 50% + 16px);
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: calc(24px * var(--spacing-scale));
+    text-align: center;
+  }
+
+  .about-photo {
+    width: calc(180px * var(--font-scale));
+    height: calc(180px * var(--font-scale));
+    margin-bottom: calc(16px * var(--spacing-scale));
+  }
+
+  .about-content {
+    text-align: left;
+  }
+
+  .about-intro {
+    font-size: calc(1.1rem * var(--font-scale));
+  }
+
+  .about p {
+    font-size: calc(1rem * var(--font-scale));
+  }
+}
+
+/* Tablets and Large phones (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .portfolio {
+    padding: 15px;
+  }
+
+  .name {
+    font-size: 2.2rem;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .tagline {
+    font-size: 0.95rem;
+  }
+
+  .section-title {
+    font-size: 1.65rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .project-card {
+    margin: 15px 0;
+    padding: 18px;
+  }
+
+  .chat-container {
+    margin: 30px 15px;
+    max-width: 90%;
+  }
+
+  .message-content {
+    max-width: 85%;
+    font-size: 14px;
+  }
+
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: calc(28px * var(--spacing-scale));
+    text-align: center;
+  }
+
+  .about-photo {
+    width: calc(200px * var(--font-scale));
+    height: calc(200px * var(--font-scale));
+  }
+
+  .about-content {
+    text-align: center;
+  }
+
+  .about-intro {
+    font-size: calc(1.15rem * var(--font-scale));
+  }
+
+  .about p {
+    font-size: calc(1.05rem * var(--font-scale));
+  }
+
+  .hero-section {
+    padding: 30px 15px;
+  }
+
+  .section {
+    padding: 40px 15px;
+  }
+}
+
+/* Small laptops and large tablets (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .portfolio {
+    padding: 20px;
+  }
+
+  .name {
+    font-size: 2.8rem;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+
+  .tagline {
+    font-size: 1.05rem;
+  }
+
+  .section-title {
+    font-size: 1.85rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+
+  .project-card {
+    margin: 20px 0;
+    padding: 20px;
+  }
+
+  .chat-container {
+    margin: 35px 20px;
+    max-width: 80%;
+  }
+
+  .hero-section {
+    padding: 40px 20px;
+  }
+
+  .section {
+    padding: 50px 20px;
+  }
+}
+
+/* Large desktops (1025px and up) */
+@media (min-width: 1025px) {
+  .portfolio {
+    padding: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .project-card {
+    margin: 25px 0;
+    padding: 25px;
+  }
+
+  .chat-container {
+    margin: 40px auto;
+    max-width: 600px;
+  }
+
+  .hero-section {
+    padding: 60px 40px;
+  }
+
+  .section {
+    padding: 60px 40px;
+  }
+}
+
+/* Landscape orientation fixes */
+@media (max-height: 500px) and (orientation: landscape) {
+  .chat-messages {
+    max-height: 200px;
+  }
+
+  .hero-section {
+    padding: 20px;
+  }
+
+  .section {
+    padding: 30px 20px;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .profile-img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
   }
 }
