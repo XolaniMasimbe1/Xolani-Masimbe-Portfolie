@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import Layout from './components/Layout'
 import Home from './pages/Home'
@@ -12,18 +12,20 @@ import MongoTest from './components/MongoTest'
 
 function App() {
   return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/skills" element={<SkillsPage />} />
-        <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/experience" element={<ExperiencePage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/ai-agent" element={<AIAgent />} />
-        <Route path="/test-mongo" element={<MongoTest />} />
-      </Route>
-    </Routes>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/skills" element={<SkillsPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/experience" element={<ExperiencePage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/ai-agent" element={<AIAgent />} />
+          <Route path="/test-mongo" element={<MongoTest />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
