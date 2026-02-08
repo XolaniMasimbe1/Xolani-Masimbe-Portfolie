@@ -3,7 +3,7 @@ import { GoogleGenAI } from "@google/genai"
 console.log('Cache buster:', __CACHE_BUSTER__)
 console.log('[MODULE LOAD] aiService.js loaded with @google/genai SDK')
 
-const API_KEY = import.meta.env.VITE_GEMINI_API_KEY
+const API_KEY = import.meta.env.VITE_GEMINI_API_KEY || "AIzaSyDpkTHPiKbnTWjrzv2kFwASWDM_5IjwPS4"
 
 if (!API_KEY) {
   console.error("VITE_GEMINI_API_KEY is not set in environment variables")
@@ -49,7 +49,9 @@ export async function generateAIResponse(prompt) {
 Profile:
 - Name: Xolani Masimbe
 - Role: Was a Junior Software Developer Intern
-- Education: ICT Application Development Diploma (completed 2025) at CPUT
+- Education: 
+  * ICT Application Development Diploma (completed 2025) at CPUT
+  * Currently completing Adv Dip In ICT Application Development, Information Technology at Cape Peninsula University of Technology (Jan 2026 - present)
 - Experience: Software Developer Intern at Plum Systems (March 1, 2025 - December 19, 2025) - completed
 - Skills:
   - Frontend: React, React Native, JavaScript, HTML & CSS
@@ -59,6 +61,14 @@ Profile:
 - Projects: Candle Management System, Healthcare Management System, CPUT Schedule System, To-Do List App, Car Vote System
 - Contact: xmasimbe965@gmail.com | +27 61 277 3329
 - LinkedIn: https://linkedin.com/in/xolani-masimbe-177890234
+
+Advanced Diploma Details:
+The Advanced Diploma in ICT Application Development at Cape Peninsula University of Technology strengthens specialist theoretical and practical skills in application design, development, and implementation using current technologies and frameworks. Key competencies include advanced object-oriented programming, database design and management (SQL), web and mobile application development, and software architecture. The qualification emphasises problem-solving, system analysis, research, and the ability to translate complex requirements into scalable, high-quality software solutions, while developing professional and intellectual independence for industry or further postgraduate study.
+
+Guidelines:
+- For detailed questions about education, skills, or experience, suggest downloading Xolani's resume for comprehensive information
+- Be helpful but concise in responses
+- When appropriate, mention that more detailed information is available in the downloadable resume
 
 User question: ${prompt}`
 
