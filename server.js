@@ -210,7 +210,7 @@ User question: ${prompt}`;
 // API Routes
 
 // MongoDB connection
-const uri = process.env.VITE_MONGODB_URI || "mongodb+srv://xmasimbe965_db_user:JKKjEOtxV17y4jcp@xolanidb.kf5qxbp.mongodb.net/?appName=XolaniDb";
+const uri = process.env.VITE_MONGODB_URI;
 
 const client = new MongoClient(uri, {
   serverApi: {
@@ -221,9 +221,23 @@ const client = new MongoClient(uri, {
 });
 
 let db = null;
+let dbConnectPromise = null;
 
 // Connect to MongoDB
 async function connectToDatabase() {
+  if (!uri) {
+    throw new Error('VITE_MONGODB_URI is not configured');
+  }
+
+  if (db) {
+    return db;
+  }
+
+  if (dbConnectPromise) {
+    return dbConnectPromise;
+  }
+
+  dbConnectPromise = (async () => {
   try {
     await client.connect();
     await client.db("admin").command({ ping: 1 });
@@ -233,7 +247,12 @@ async function connectToDatabase() {
   } catch (error) {
     console.error("❌ Failed to connect to MongoDB:", error);
     throw error;
+  } finally {
+    dbConnectPromise = null;
   }
+  })();
+
+  return dbConnectPromise;
 }
 
 // Test endpoint
@@ -293,9 +312,18 @@ app.get('*', (req, res) => {
 });
 
 // Start server
-app.listen(PORT, async () => {
+const server = app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
-  await connectToDatabase();
+  console.log("ℹ️ MongoDB will connect on first database request");
+});
+
+server.on('error', (error) => {
+  if (error.code === 'EADDRINUSE') {
+    console.error(`❌ Port ${PORT} is already in use. Stop the existing process or change PORT in .env.`);
+    process.exit(1);
+  }
+  console.error('❌ Server startup error:', error);
+  process.exit(1);
 });
 
 // Graceful shutdown
